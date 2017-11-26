@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String baseUrl = (String) request.getAttribute("baseUrl");%>
+<% String pageUri =(String) request.getAttribute("pageUri");%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,22 +21,19 @@
     <title>Java Todo List</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="resources/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="${assets}css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="resources/assets/css/narrow-jumbotron.css" rel="stylesheet">
+    <link href="${assets}css/narrow-jumbotron.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
 
-        <%@ include file= "common/header.jsp"%>
+        <% String pageName = (String) request.getAttribute("pageName"); %>
 
-        <%--<% out.print(request.getRequestURI()); %>--%>
-        <%--<% out.print(request.getAttribute("page")); %>--%>
-        <%--<%@ include file  = '../todo.jsp'%>--%>
+        <%@ include file= "common/header.jsp"%>
     
         <%
-            String pageName = (String) request.getAttribute("page");
             if(pageName !=null){
                 if(!pageName.isEmpty()){
         %>

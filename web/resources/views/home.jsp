@@ -1,8 +1,8 @@
 <main role="main">
 
     <div class="jumbotron">
-        <h1 class="display-3">Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <h1 class="display-3">Java Servlet Todo List</h1>
+        <p class="lead">This todo list app page organized by page template layout system or page mastering. The data store or mange by using MySql database.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
     </div>
 

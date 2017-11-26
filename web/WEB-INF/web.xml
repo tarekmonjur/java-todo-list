@@ -4,31 +4,32 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <welcome-file-list>
-        <welcome-file>resources/views/layouts/layout.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>resources/views/layouts/layout.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
+
+    <servlet>
+        <servlet-name>home</servlet-name>
+        <servlet-class>Todo.HomeServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>home</servlet-name>
+        <url-pattern></url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>todo</servlet-name>
         <servlet-class>Todo.TodoServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>todo</servlet-name>
         <url-pattern>/todo</url-pattern>
+        <url-pattern>/todo-add</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-        <!--<servlet-name>home</servlet-name>-->
-        <!--<servlet-class>Home.HomeServlet</servlet-class>-->
-    <!--<load-on-startup>0</load-on-startup>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>home</servlet-name>-->
-        <!--<url-pattern>/home</url-pattern>-->
-    <!--</servlet-mapping>-->
 
 </web-app>
 
