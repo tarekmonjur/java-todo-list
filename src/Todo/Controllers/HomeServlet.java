@@ -1,4 +1,4 @@
-package Todo;
+package Todo.Controllers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

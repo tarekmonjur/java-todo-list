@@ -36,7 +36,7 @@ public abstract class CommonClass extends HttpServlet {
         this.uri = request.getRequestURI();
         this.requestMethod = request.getMethod();
         this.baseUrl = this.scheme+"://"+this.serverName+this.serverPort+this.contextPath;
-        this.assets = this.baseUrl+"/resources/assets/";
+        this.assets = this.baseUrl+"/static/assets/";
 
         request.setAttribute("baseUrl", this.baseUrl);
         request.setAttribute("pageUri", this.uri);
@@ -44,5 +44,7 @@ public abstract class CommonClass extends HttpServlet {
 
         return this.baseUrl;
     }
+
+
 
 }
