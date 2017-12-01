@@ -42,10 +42,10 @@ public abstract class DatabaseClass {
     private static Connection makeConnection(String driver, String host, String port, String db, String userName, String password)
     {
         try{
-            if(DB == null) {
+//            if(DB == null) {
                 Class.forName("com.mysql.jdbc.Driver");
                 DB = DriverManager.getConnection("jdbc:"+driver+"://"+host+":"+port+"/"+db, userName, password);
-            }
+//            }
         }catch(Exception e){
             System.out.println(e);
         }

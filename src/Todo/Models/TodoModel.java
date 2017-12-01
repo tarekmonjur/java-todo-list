@@ -59,6 +59,7 @@ public class TodoModel extends DatabaseClass{
                 TD.setState(rs.getString(8));
                 TD.setZip(rs.getString(9));
             }
+            DB.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -91,11 +92,39 @@ public class TodoModel extends DatabaseClass{
                 list.add(TD);
                 rows++;
             }
+            DB.close();
         }catch(Exception e){
             e.printStackTrace();
         }
 
         return list;
+    }
+
+
+    public static int update(Todo TD)
+    {
+        int result = 0;
+        try {
+            Connection DB = DatabaseClass.dbConnection(dbDriver);
+            String query = "update "+Table+" set first_name=?,last_name=?,email=?,password=?,address=?,city=?,state=?,zip=? where id=?";
+            PreparedStatement pstmt = DB.prepareStatement(query);
+            pstmt.setString(1, TD.getFirstName());
+            pstmt.setString(2, TD.getLastName());
+            pstmt.setString(3, TD.getEmail());
+            pstmt.setString(4, TD.getPassword());
+            pstmt.setString(5, TD.getAddress());
+            pstmt.setString(6, TD.getCity());
+            pstmt.setString(7, TD.getState());
+            pstmt.setString(8, TD.getZip());
+            pstmt.setInt(9, TD.getId());
+            result = pstmt.executeUpdate();
+            DB.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("data not update");
+        }
+        return result;
     }
 
 }
