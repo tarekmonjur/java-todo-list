@@ -41,7 +41,7 @@
         <servlet-name>todo</servlet-name>
         <url-pattern>/todo</url-pattern>
         <url-pattern>/todo-add</url-pattern>
-        <url-pattern>/todo-edit</url-pattern>
+        <url-pattern>/todo-edit/*</url-pattern>
     </servlet-mapping>
 
 

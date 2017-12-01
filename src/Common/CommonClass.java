@@ -12,6 +12,7 @@ public abstract class CommonClass extends HttpServlet {
     protected String serverName;
     protected String serverPort;
     protected String contextPath;
+    protected String pathInfo;
     protected String uri;
     protected String requestMethod;
     protected String baseUrl;
@@ -29,11 +30,14 @@ public abstract class CommonClass extends HttpServlet {
 //        request.getServletPath();
 //        request.getPathInfo();
 
+
+
         this.scheme = request.getScheme();
         this.serverName = request.getServerName();
         this.serverPort = (request.getServerPort() == 80) ? "" : ":" + request.getServerPort();
         this.contextPath = request.getContextPath();
         this.uri = request.getRequestURI();
+        this.pathInfo = request.getPathInfo();
         this.requestMethod = request.getMethod();
         this.baseUrl = this.scheme+"://"+this.serverName+this.serverPort+this.contextPath;
         this.assets = this.baseUrl+"/static/assets/";
@@ -43,6 +47,16 @@ public abstract class CommonClass extends HttpServlet {
         request.setAttribute("assets", this.assets);
 
         return this.baseUrl;
+    }
+
+
+    protected String segment(int segment){
+        String[] segmentPart = this.uri.split("/");
+        if(segmentPart.length > segment){
+            return segmentPart[segment];
+        }else {
+            return "0";
+        }
     }
 
 

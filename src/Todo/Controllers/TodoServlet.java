@@ -58,13 +58,20 @@ public class TodoServlet extends CommonClass{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         this.commonSettings(request);
+        String sOne = this.segment(1);
+
         if(this.uri.equals("/todo")){
             List<Todo> todoList = TodoModel.select();
             request.setAttribute("todos", todoList);
             request.setAttribute("pageName", "./../todo.jsp");
         }else if(this.uri.equals("/todo-add")){
             request.setAttribute("pageName", "./../todo_add.jsp");
-        }else if(this.uri.equals("/todo-edit")){
+        }else if(this.uri.equals("/todo-edit") || sOne.equals("todo-edit")){
+            String sid = this.segment(2);
+            int id = Integer.parseInt(sid);
+            request.setAttribute("id", id);
+            Todo TD = TodoModel.find(id);
+            request.setAttribute("todo", TD);
             request.setAttribute("pageName", "./../todo_edit.jsp");
         }
 
