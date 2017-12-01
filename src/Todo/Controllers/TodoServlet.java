@@ -1,5 +1,7 @@
 package Todo.Controllers;
 
+import java.io.PrintWriter;
+import java.util.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +59,9 @@ public class TodoServlet extends CommonClass{
     {
         this.commonSettings(request);
         if(this.uri.equals("/todo")){
+
+            List<Todo> todoList = TodoModel.selectAll();
+            request.setAttribute("todos", todoList);
             request.setAttribute("pageName", "./../todo.jsp");
         }else if(this.uri.equals("/todo-add")){
             request.setAttribute("pageName", "./../todo_add.jsp");

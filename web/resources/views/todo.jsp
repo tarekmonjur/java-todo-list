@@ -1,3 +1,6 @@
+<%@ page import="java.util.*" %>
+<% //List data= (List)request.getAttribute("todos"); %>
+
 <main role="main">
 
     <table class="table">
@@ -10,24 +13,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        <% for(Object td: (List)request.getAttribute("todos")){%>
+            <tr>
+                <th scope="row">1</th>
+                <td>${td.}</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
 
