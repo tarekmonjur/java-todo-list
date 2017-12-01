@@ -127,4 +127,21 @@ public class TodoModel extends DatabaseClass{
         return result;
     }
 
+
+    public static int delete(int id)
+    {
+        int result=0;
+        try{
+            Connection DB = DatabaseClass.dbConnection(dbDriver);
+            String query = "delete from "+Table+" where id=?";
+            PreparedStatement pstmt = DB.prepareStatement(query);
+            pstmt.setInt(1,id);
+            result = pstmt.executeUpdate();
+            DB.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }

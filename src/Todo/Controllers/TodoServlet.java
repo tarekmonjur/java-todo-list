@@ -49,6 +49,7 @@ public class TodoServlet extends CommonClass{
             result = TodoModel.save(TD);
             if(result > 0){
                 request.setAttribute("success",  "<p>Todo saved successfully!</p>");
+                response.sendRedirect("todo");
             }else{
                 request.setAttribute("error", "<p>Todo not saved successfully!</p>");
                 request.setAttribute("first_name", firstName);
@@ -83,6 +84,8 @@ public class TodoServlet extends CommonClass{
             Todo TD = TodoModel.find(id);
             request.setAttribute("todo", TD);
             request.setAttribute("pageName", "./../todo_edit.jsp");
+        }else if(this.uri.equals("/todo-delete") || segmentOne.equals("todo-delete")){
+            this.doDelete(request, response);
         }
 
         RequestDispatcher rd=request.getRequestDispatcher("/resources/views/layouts/layout.jsp");
@@ -100,9 +103,26 @@ public class TodoServlet extends CommonClass{
         int result = TodoModel.update(TD);
         if(result > 0){
             request.setAttribute("success",  "<p>Todo updated successfully!</p>");
+            response.sendRedirect("/todo");
         }else{
             request.setAttribute("error", "<p>Todo not updated successfully!</p>");
         }
+    }
+
+
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        this.commonSettings(request);
+        String sid = this.segment(2);
+        int id = Integer.parseInt(sid);
+
+        int result = TodoModel.delete(id);
+        if(result > 0){
+            request.setAttribute("success",  "<p>Todo updated successfully!</p>");
+        }else{
+            request.setAttribute("error", "<p>Todo not updated successfully!</p>");
+        }
+        response.sendRedirect("/todo");
     }
 
 

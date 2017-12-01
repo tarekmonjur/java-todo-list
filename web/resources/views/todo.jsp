@@ -32,7 +32,7 @@
                 <td>
                     <div class="btn btn-group">
                         <a href="${baseUrl}/todo-edit/<%=TD.getId()%>" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="${baseUrl}/todo-delete/<%=TD.getId()%>" class="btn btn-sm btn-danger">Delete</a>
+                        <a onclick="return confirm('Are you sure delete this?')" href="${baseUrl}/todo-delete/<%=TD.getId()%>" class="btn btn-sm btn-danger">Delete</a>
                     </div>
                 </td>
             </tr>
@@ -41,4 +41,3 @@
     </table>
 
 </main>
-
