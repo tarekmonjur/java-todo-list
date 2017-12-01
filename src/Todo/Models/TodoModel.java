@@ -38,17 +38,48 @@ public class TodoModel extends DatabaseClass{
     }
 
 
-    public static List<Todo> selectAll()
+    public static Todo find(int Id)
     {
-        List<Todo> list = new ArrayList<Todo>();
+        Todo TD = new Todo();
+        try{
+            Connection DB = DatabaseClass.dbConnection(dbDriver);
+            String query = "select * from "+Table+" where id=?";
+            PreparedStatement pstmt = DB.prepareStatement(query);
+            pstmt.setInt(1,Id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                TD.setRow(1);
+                TD.setId(rs.getInt("id"));
+                TD.setFirstName(rs.getString("first_name"));
+                TD.setLastName(rs.getString(3));
+                TD.setEmail(rs.getString(4));
+                TD.setAddress(rs.getString(6));
+                TD.setCity(rs.getString(7));
+                TD.setState(rs.getString(8));
+                TD.setZip(rs.getString(9));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return TD;
+    }
+
+
+    public static List<Todo> select()
+    {
+        List<Todo> list = new ArrayList<>();
+        int rows=1;
 
         try {
             Connection DB = DatabaseClass.dbConnection(dbDriver);
             String query = "select * from " + Table;
             PreparedStatement pstmt = DB.prepareStatement(query);
             ResultSet rs = pstmt.executeQuery();
+
             while (rs.next()) {
                 Todo TD = new Todo();
+                TD.setRow(rows);
                 TD.setId(rs.getInt(1));
                 TD.setFirstName(rs.getString(2));
                 TD.setLastName(rs.getString(3));
@@ -58,6 +89,7 @@ public class TodoModel extends DatabaseClass{
                 TD.setState(rs.getString(8));
                 TD.setZip(rs.getString(9));
                 list.add(TD);
+                rows++;
             }
         }catch(Exception e){
             e.printStackTrace();

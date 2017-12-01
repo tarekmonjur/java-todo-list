@@ -59,12 +59,13 @@ public class TodoServlet extends CommonClass{
     {
         this.commonSettings(request);
         if(this.uri.equals("/todo")){
-
-            List<Todo> todoList = TodoModel.selectAll();
+            List<Todo> todoList = TodoModel.select();
             request.setAttribute("todos", todoList);
             request.setAttribute("pageName", "./../todo.jsp");
         }else if(this.uri.equals("/todo-add")){
             request.setAttribute("pageName", "./../todo_add.jsp");
+        }else if(this.uri.equals("/todo-edit")){
+            request.setAttribute("pageName", "./../todo_edit.jsp");
         }
 
         RequestDispatcher rd=request.getRequestDispatcher("/resources/views/layouts/layout.jsp");

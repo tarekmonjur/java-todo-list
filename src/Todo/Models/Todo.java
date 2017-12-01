@@ -5,79 +5,85 @@ package Todo.Models;
  */
 public class Todo {
 
-    protected int id;
+    protected int row, id;
     protected String firstName,lastName,email,password,address,city,state,zip;
 
-    public int setId(int id) {
-        return this.id = id;
+    public void setRow(int row) {
+        this.row = row;
     }
 
-    public String setFirstName(String firstName) {
-        return this.firstName = firstName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String setLastName(String lastName) {
-        return this.lastName = lastName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String setEmail(String email) {
-        return this.email = email;
+    public void setLastName(String lastName) {
+         this.lastName = lastName;
     }
 
-    public String setPassword(String password) {
-        return this.password = password;
+    public void setEmail(String email) {
+         this.email = email;
     }
 
-    public String setAddress(String address) {
-        return this.address = address;
+    public void setPassword(String password) {
+         this.password = password;
     }
 
-    public String setCity(String city) {
-        return this.city = city;
+    public void setAddress(String address) {
+         this.address = address;
     }
 
-    public String setState(String state) {
-        return this.state = state;
+    public void setCity(String city) {
+         this.city = city;
     }
 
-    public String setZip(String zip) {
-        return this.zip = zip;
+    public void setState(String state) {
+         this.state = state;
+    }
+
+    public void setZip(String zip) {
+         this.zip = zip;
     }
 
 
 
-    public int getId() {  return id; }
+    public int getRow() { return this.row; }
+
+    public int getId() { return this.id; }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public String getCity() {
-        return city;
+        return this.city;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
     public String getZip() {
-        return zip;
+        return this.zip;
     }
 
 
